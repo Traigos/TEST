@@ -202,7 +202,7 @@ export function parseLayoutXml(layoutXml: string): ParsedViewLayout {
     name: (cell['@_name'] as string) || '',
     width: Number(cell['@_width']) || 150,
     logicalName: (cell['@_name'] as string) || '',
-    disableSorting: cell['@_disableSorting'] === '1' || cell['@_disableSorting'] === true,
+    disableSorting: cell['@_disableSorting'] === '1' || cell['@_disableSorting'] === 1 || cell['@_disableSorting'] === true,
   }));
 
   return { columns };
