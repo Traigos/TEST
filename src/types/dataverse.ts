@@ -321,6 +321,80 @@ export type DataRecord = Record<string, unknown> & {
   _entityName?: string;
 };
 
+// -- Flow Session (Elastic Table) --
+export const FlowStatus = {
+  NotSpecified: 0,
+  Paused: 1,
+  Running: 2,
+  Waiting: 3,
+  Succeeded: 4,
+  Skipped: 5,
+  Suspended: 6,
+  Cancelled: 7,
+  Failed: 8,
+  Faulted: 9,
+  TimedOut: 10,
+  Aborted: 11,
+  Ignored: 12,
+  Deleted: 13,
+  Terminated: 14,
+} as const;
+export type FlowStatus = (typeof FlowStatus)[keyof typeof FlowStatus];
+
+export interface FlowSession {
+  flowsessionid: string;
+  name: string;
+  regardingobjectid?: string;
+  regardingobjectidname?: string;
+  statuscode: FlowStatus;
+  statecode: number;
+  startedon?: string;
+  completedon?: string;
+  errorcode?: string;
+  errormessage?: string;
+  context?: string;
+  gateway?: string;
+  outputs?: string;
+  machineid?: string;
+  machinegroupid?: string;
+}
+
+export interface FlowRun {
+  flowrunid: string;
+  name: string;
+  flowsessionid: string;
+  workflowid: string;
+  workflowidname?: string;
+  status: FlowStatus;
+  starttime?: string;
+  endtime?: string;
+  errorcode?: string;
+  errormessage?: string;
+  triggertype?: string;
+}
+
+export interface FlowErrorDetails {
+  flowRunId: string;
+  flowName: string;
+  workflowId: string;
+  status: FlowStatus;
+  statusLabel: string;
+  errorCode: string | null;
+  errorMessage: string | null;
+  startTime: string | null;
+  endTime: string | null;
+  duration: number | null;
+}
+
+export interface FlowErrorSummary {
+  workflowId: string;
+  flowName: string;
+  totalRuns: number;
+  failedRuns: number;
+  errorRate: number;
+  errors: FlowErrorDetails[];
+}
+
 // -- API Response Wrapper --
 export interface DataverseResponse<T> {
   value: T[];
