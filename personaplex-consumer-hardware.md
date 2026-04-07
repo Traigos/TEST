@@ -34,13 +34,16 @@ PersonaPlex is NVIDIA's 7B parameter real-time, full-duplex speech-to-speech con
 
 ### Consumer GPU Compatibility
 
-| GPU | VRAM | Feasibility |
-|-----|------|-------------|
-| RTX 4090 | 24 GB | Best consumer option, tight but workable |
-| RTX 4080 | 16 GB | Marginal, likely needs quantization |
-| RTX 3090 | 24 GB | Possible, older architecture |
-| RTX 3080 | 10-12 GB | Insufficient VRAM |
-| RTX 4060 | 8 GB | Not practical |
+| GPU | VRAM | Bandwidth | Feasibility |
+|-----|------|-----------|-------------|
+| RTX 5090 | 32 GB | 1792 GB/s | Comfortable fit, best consumer option |
+| RTX 4090 | 24 GB | 1008 GB/s | Tight but workable at full precision |
+| RTX 5080 | 16 GB | 960 GB/s | Marginal, needs quantization; fast bandwidth helps |
+| RTX 5080 Super (rumored) | 24 GB | TBD | Would be a strong option if it ships |
+| RTX 4080 | 16 GB | 717 GB/s | Marginal, likely needs quantization |
+| RTX 3090 | 24 GB | 936 GB/s | Possible, older architecture |
+| RTX 3080 | 10-12 GB | 760 GB/s | Insufficient VRAM |
+| RTX 4060 | 8 GB | 272 GB/s | Not practical |
 
 ## Conclusion
 
